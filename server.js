@@ -32,8 +32,7 @@ app.use(function(req, res, next) {
 
 
 app.post('/', (request, response) => {
-
-	//console.log(request.body);
+	console.log("Request : / , for Category : "+request.body.wiki_category);
 
     var category = request.body.wiki_category;
     var language = request.body.wiki_language;
@@ -49,7 +48,7 @@ app.post('/', (request, response) => {
 
 app.post('/tag/', (request, response) => {
     var par = request.body.paragraph;
-    //console.log(par);
+    console.log("Request : /tag/ for paragraph");
     var tagged = nlp_pos_tagging.tag("en",par);
     response.send(tagged);
 });
@@ -62,7 +61,7 @@ app.get('/wrongs/', (request, response) => {
 	connection.query("SELECT * FROM wrong_answers",function (error, results, fields) {
 		if (error) {
 			throw error;
-			console.log(error);
+			//console.log(error);
 		}else{
 			var wrongs_json = JSON.parse(JSON.stringify(results));
 			response.status(200).send(wrongs_json[0]);
@@ -194,7 +193,8 @@ app.post('/login/', (request, response) => {
 
 
 app.post('/game_end/', (request, response) => {
-
+	console.log("Request : /game_end/ , for ID : "+request.body.user_id+" , Score : "+request.body.score+" Wrong_answers : "+JSON.stringify(request.body.wrong_answers));
+	
     var id = request.body.user_id;
     var score = request.body.score;
     var wrong_answers = request.body.wrong_answers;
@@ -206,6 +206,7 @@ app.post('/game_end/', (request, response) => {
 	connection.connect();
 	connection.query("UPDATE users SET Score = Score + "+score+" WHERE ID = "+id, function (error, results, fields) {
 		if (error){
+			console.log("");
 			response.status(500).send("Could not update score");
 		}else{
 			var query = "UPDATE wrong_answers SET "+
