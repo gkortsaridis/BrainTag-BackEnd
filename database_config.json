@@ -1,0 +1,6 @@
+{
+	"host"     : "localhost",
+	"user"     : "root",
+	"password" : "yokoo8332",
+	"database" : "braintag"
+}

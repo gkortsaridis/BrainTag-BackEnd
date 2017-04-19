@@ -12,15 +12,7 @@ const port = 3000;
 
 
 var mysql = require('mysql');
-
-var mysql_config = {
-	host     : 'localhost',
-	user     : 'root',
-	password : 'yokoo8332',
-	database : 'braintag'
-};
-
-
+var config = require('./database_config.json');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -48,20 +40,21 @@ app.post('/', (request, response) => {
 
 app.post('/tag/', (request, response) => {
     var par = request.body.paragraph;
+    var wrongs = request.body.wrongs;
+
     console.log("Request : /tag/ for paragraph");
-    var tagged = nlp_pos_tagging.tag("en",par);
+    var tagged = nlp_pos_tagging.tag("en",par,wrongs);
     response.send(tagged);
 });
 
 app.get('/wrongs/', (request, response) => {
 
-    var connection = mysql.createConnection(mysql_config);
+    var connection = mysql.createConnection(config);
 	var wrongs_json;
 	connection.connect();
 	connection.query("SELECT * FROM wrong_answers",function (error, results, fields) {
 		if (error) {
 			throw error;
-			//console.log(error);
 		}else{
 			var wrongs_json = JSON.parse(JSON.stringify(results));
 			response.status(200).send(wrongs_json[0]);
@@ -107,7 +100,7 @@ app.post('/scoreboard/', (request, response) => {
 	var myscore = -1;
 	var myposition = -1;
 
-    var connection = mysql.createConnection(mysql_config);
+    var connection = mysql.createConnection(config);
 	var wrongs_json;
 	connection.connect();
 	connection.query("SELECT `ID`, `Username`, `Score` FROM `users` ORDER BY `Score` DESC",function (error, results, fields) {
@@ -145,8 +138,8 @@ app.post('/register/', (request, response) => {
     var password = request.body.password;
     var email = request.body.email;
 
-	var connection = mysql.createConnection(mysql_config);
-	var connection1 = mysql.createConnection(mysql_config);
+	var connection = mysql.createConnection(config);
+	var connection1 = mysql.createConnection(config);
 
 	connection.connect();
 	connection.query("SELECT * FROM users WHERE Username = '"+username+"'", function (error, results, fields) {
@@ -167,13 +160,16 @@ app.post('/register/', (request, response) => {
 
 });
 
-app.post('/login/', (request, response) => {
 
+//Checked out
+app.post('/login/', (request, response) => {
+	console.log("Request : /login/ , for username : "+request.body.username);
+	
     var username = request.body.username;
     var password = request.body.password;
 
 	var jsonResp;
-	var connection = mysql.createConnection(mysql_config);
+	var connection = mysql.createConnection(config);
 	connection.connect();
 	connection.query("SELECT * FROM users WHERE Username = '"+username+"' AND Password = '"+password+"'", function (error, results, fields) {
 		if (error) throw error;
@@ -191,17 +187,16 @@ app.post('/login/', (request, response) => {
 	connection.end();
 });
 
-
+//Checked out
 app.post('/game_end/', (request, response) => {
-	console.log("Request : /game_end/ , for ID : "+request.body.user_id+" , Score : "+request.body.score+" Wrong_answers : "+JSON.stringify(request.body.wrong_answers));
+	console.log("Request : /game_end/ , for ID : "+request.body.user_id+" , Score : "+request.body.score);
 	
     var id = request.body.user_id;
     var score = request.body.score;
     var wrong_answers = request.body.wrong_answers;
-    //console.log(wrong_answers);
 
-	var connection = mysql.createConnection(mysql_config);
-	var connection1 = mysql.createConnection(mysql_config);
+	var connection = mysql.createConnection(config);
+	var connection1 = mysql.createConnection(config);
 
 	connection.connect();
 	connection.query("UPDATE users SET Score = Score + "+score+" WHERE ID = "+id, function (error, results, fields) {

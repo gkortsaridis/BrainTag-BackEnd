@@ -1,0 +1,28 @@
+server is listening on 3000
+Request : /scoreboard/ from ID : 1
+Request : /tag/ for paragraph
+Could not use "nc", falling back to slower node.js method for sync requests.
+TypeError: Cannot read property '``' of undefined
+    at Object.module.exports.tag_en_stanford (/var/www/html/thesis/node_modules/nlp_pos_tagging/index.js:102:23)
+    at Object.module.exports.tag (/var/www/html/thesis/node_modules/nlp_pos_tagging/index.js:19:21)
+    at /var/www/html/thesis/server.js:52:34
+    at Layer.handle [as handle_request] (/var/www/html/thesis/node_modules/express/lib/router/layer.js:95:5)
+    at next (/var/www/html/thesis/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/var/www/html/thesis/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/var/www/html/thesis/node_modules/express/lib/router/layer.js:95:5)
+    at /var/www/html/thesis/node_modules/express/lib/router/index.js:277:22
+    at Function.process_params (/var/www/html/thesis/node_modules/express/lib/router/index.js:330:12)
+    at next (/var/www/html/thesis/node_modules/express/lib/router/index.js:271:10)
+Request : /scoreboard/ from ID : 1
+server is listening on 3000
+server is listening on 3000
+server is listening on 3000
+Request : /scoreboard/ from ID : 1
+Request : /tag/ for paragraph
+Could not use "nc", falling back to slower node.js method for sync requests.
+Request : /scoreboard/ from ID : 1
+Request : /categories/ 
+Request : /scoreboard/ from ID : 1
+Request : /categories/ 
+Request : / , for Category : Sports
+Request : /scoreboard/ from ID : 1
