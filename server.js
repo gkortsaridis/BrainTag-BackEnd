@@ -3,16 +3,14 @@
 
 const express = require('express');
 var bodyParser = require('body-parser');
+var mysql = require('mysql');
 
-var nlp_pos_tagging = require('nlp_pos_tagging');
-var wiki = require('wiki_page_crawler');
+var config = require('./database_config.json');
+var nlp_pos_tagging = require("./natural_language_processing.js");
+var wiki = require("./wikipedia_page_crawler");
 
 const app = express();
 const port = 3000;
-
-
-var mysql = require('mysql');
-var config = require('./database_config.json');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -68,11 +66,11 @@ app.get('/wrongs/', (request, response) => {
 //TODO : Add more categories
 app.get('/categories/', (request, response) => {
 	console.log("Request : /categories/ ");
-	
+
 	var respo = new Object();
-	
+
 	var resp = new Array();
-	
+
 	var sports = new Object();
 	sports.name = "Sports";
 	var sportsCategories = new Array();
@@ -85,7 +83,7 @@ app.get('/categories/', (request, response) => {
 	sportsCategories.push("NBA");
 	sports.categories = sportsCategories;
 	resp.push(sports);
-	
+
 	respo.categories = resp;
 	respo.category = "Sports";
 	response.status(200).send(respo);
@@ -119,7 +117,7 @@ app.post('/scoreboard/', (request, response) => {
 
 			if(myscore == -1){	myscore = "N/A"; }
 			if(myposition == -1){ myposition = "N/A"; }
-			
+
 			resp.scoreboard = json;
 			resp.score = myscore;
 			resp.rank = myposition;
@@ -164,7 +162,7 @@ app.post('/register/', (request, response) => {
 //Checked out
 app.post('/login/', (request, response) => {
 	console.log("Request : /login/ , for username : "+request.body.username);
-	
+
     var username = request.body.username;
     var password = request.body.password;
 
@@ -190,7 +188,7 @@ app.post('/login/', (request, response) => {
 //Checked out
 app.post('/game_end/', (request, response) => {
 	console.log("Request : /game_end/ , for ID : "+request.body.user_id+" , Score : "+request.body.score);
-	
+
     var id = request.body.user_id;
     var score = request.body.score;
     var wrong_answers = request.body.wrong_answers;

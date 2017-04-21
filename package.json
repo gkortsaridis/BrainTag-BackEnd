@@ -1,0 +1,19 @@
+{
+  "name": "BrainTag-BackEnd",
+  "version": "1.0.0",
+  "description": "All the backend structure for the BraiTag platform",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": ">= 4.14.1",
+    "body-parser": ">= 1.16.0",
+    "mysql": ">= 2.13.0",
+    "sync-request" : ">=4.0.1",
+    "encodeurl" : ">=1.0.1",
+    "cheerio": ">=0.22.0"
+  },
+  "author": "George Kortsaridis",
+  "license": "ISC"
+}
