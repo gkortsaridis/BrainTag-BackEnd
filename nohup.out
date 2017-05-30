@@ -1,0 +1,73 @@
+server is listening on 3000
+Request : /login/ , for username : gkortsaridis
+Request : /scoreboard/ from ID : 1
+Request : / , for Category : Greece
+Request : /game_end/ , for ID : 1 , Score : 8
+Request : /scoreboard/ from ID : 1
+Request : /categories/ 
+Request : /tag/ for paragraph
+Request : /scoreboard/ from ID : 1
+Request : /scoreboard/ from ID : 2
+Request : /scoreboard/ from ID : 1
+Request : /scoreboard/ from ID : 2
+Request : /scoreboard/ from ID : 1
+Request : /scoreboard/ from ID : 1
+Request : /scoreboard/ from ID : 2
+Request : /scoreboard/ from ID : 1
+Request : /scoreboard/ from ID : 1
+Request : /categories/ 
+Request : /tag/ for paragraph
+Request : / , for Category : Biology
+Request : / , for Category : Sports
+Request : / , for Category : Technology
+Request : /game_end/ , for ID : 1 , Score : 6
+Request : /game_end/ , for ID : 1 , Score : 6
+Request : /game_end/ , for ID : 1 , Score : 6
+Request : /game_end/ , for ID : 1 , Score : 6
+Request : /game_end/ , for ID : 1 , Score : 6
+Request : /scoreboard/ from ID : 1
+Request : /scoreboard/ from ID : 1
+Request : /scoreboard/ from ID : 1
+Request : /scoreboard/ from ID : 1
+Request : /login/ , for username : gkortsaridis
+Request : /scoreboard/ from ID : 1
+Request : /categories/ 
+Request : /scoreboard/ from ID : 1
+Request : /scoreboard/ from ID : 1
+Request : /tag/ for paragraph
+Request : /scoreboard/ from ID : 1
+Request : /categories/ 
+Request : / , for Category : Sports
+Request : /game_end/ , for ID : 1 , Score : 3
+Request : /scoreboard/ from ID : 1
+Request : /scoreboard/ from ID : 1
+Request : /scoreboard/ from ID : 1
+Request : /scoreboard/ from ID : 1
+Request : /categories/ 
+Request : / , for Category : Volleyball
+Request : /scoreboard/ from ID : 1
+Request : /categories/ 
+Request : /tag/ for paragraph
+Request : /scoreboard/ from ID : 2
+Request : /scoreboard/ from ID : 1
+Request : /scoreboard/ from ID : 1
+Request : /scoreboard/ from ID : 1
+Request : /scoreboard/ from ID : 1
+Request : /categories/ 
+Request : / , for Category : Sports
+Request : /scoreboard/ from ID : 1
+Request : /tag/ for paragraph
+Request : /scoreboard/ from ID : 1
+Request : /categories/ 
+Request : /scoreboard/ from ID : 1
+Request : /scoreboard/ from ID : 1
+Request : /categories/ 
+Request : / , for Category : Sports
+Request : /scoreboard/ from ID : 1
+Request : /login/ , for username : yoko8332
+Request : /login/ , for username : yoko8332
+Request : /login/ , for username : gkortsaridis
+Request : /scoreboard/ from ID : 1
+Request : /scoreboard/ from ID : 1
+Request : /login/ , for username : gkortsaridis
+Request : /scoreboard/ from ID : 1
